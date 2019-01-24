@@ -16,7 +16,8 @@ app.get('/', function (req, res) {
 app.get('/day1b', function (req, res) {
     fs.readFile("files\\day1a.csv", "utf8", function(err, data){
         if(err) throw err;
-        res.send(`${"DAY ONE SECOND PART - First Duplicate Found = " + dayOne.cycleFrequencyChanges(data.split(/\r\n|\n|\r/gm), 0, [])}`)
+        res.send(`${"DAY ONE SECOND PART - First Duplicate Found = " + 
+        dayOne.cycleFrequencyChanges(data.split(/\r\n|\n|\r/gm), 0, [], 0)}`)
  
     });
 });
