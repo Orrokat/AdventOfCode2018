@@ -1,5 +1,6 @@
 
 var dayOne = require("./lib/dayOne.js");
+var dayTwo = require("./lib/dayTwo.js");
 var fs = require('fs');
 const express = require('express');
 const app = express();
@@ -18,6 +19,15 @@ app.get('/day1b', function (req, res) {
         if(err) throw err;
         res.send(`${"DAY ONE SECOND PART - First Duplicate Found = " + 
         dayOne.cycleFrequencyChanges(data.split(/\r\n|\n|\r/gm), 0, [], 0)}`)
+ 
+    });
+});
+
+app.get('/day2a', function (req, res) {
+    fs.readFile("files\\day2.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY TWO FIRST PART - Checksum = " + 
+                 dayTwo.getCheckSum(data.split(/\r\n|\n|\r/gm))}`)
  
     });
 });
