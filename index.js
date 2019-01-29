@@ -32,5 +32,14 @@ app.get('/day2a', function (req, res) {
     });
 });
 
+app.get('/day2b', function (req, res) {
+    fs.readFile("files\\day2.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY TWO SECOND PART - Matching string = " + 
+                 dayTwo.getCloseMatchIDString(data.split(/\r\n|\n|\r/gm))}`)
+ 
+    });
+});
+
 app.listen(port, () => console.log(`Time Traveling Device listening on port ${port}!`))
 

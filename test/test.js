@@ -205,4 +205,34 @@ describe('dayTwo', function () {
             assert.equal(checksum, expectedCheckSum);
         });
     });
+
+    describe('given two strings of characters that are only different by one character return a string of just those characters that match', function () {
+        it('it should return the string xrecqmdonskdzupalfkwhjcdb', function () {
+ 
+            var boxID1 = "xrecqmdonskdzupalfkwhjctdb";
+            var boxID2 = "xrecqmdonskdzupalfkwhjcpdb";
+            
+            var expectedIDString = "xrecqmdonskdzupalfkwhjcdb";
+            var idString = dayTwo.getStringOfMatchingChars(boxID1, boxID2);
+            assert.deepEqual(idString, expectedIDString);
+        });
+    });
+
+    describe('given multiple strings of characters return the matching characters for the strings that are only different by one character', function () {
+        it('it should return the string xrecqmdonskdzupalfkwhjcdb', function () {
+            var boxIDs = [
+                "xrecqmdonskdzupalfkwhjctdb",
+                "xrecqxdonskdzupalfkwhjcxdb",
+                "xrxcqmdxnskdzupalfkwhxctdb",
+                "xrecqmdxnsxdzupalfkwhjctdb",
+                "xrecqxdonskdxupalfkwhjcxdb",
+                "xrecqmdonskdzupalfkwhxctdb",
+                "xrecqxdonskdzuxalfkwhjcxdb"
+             ];
+            
+            var expectedIDString = "xrecqmdonskdzupalfkwhctdb";
+            var idString = dayTwo.getCloseMatchIDString(boxIDs);
+            assert.equal(idString, expectedIDString);
+        });
+    });
  });
