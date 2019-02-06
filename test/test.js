@@ -2,6 +2,7 @@ var assert = require('assert');
 var dayOne = require("../lib/dayOne.js");
 var dayTwo = require("../lib/dayTwo.js");
 var dayThree = require("../lib/dayThree.js");
+var dataUtil = require("../lib/dataUtil.js");
 
 describe('dayOne', function () {
 
@@ -395,6 +396,6 @@ describe('dayThree', function () {
             var claimID = dayThree.findUncontestedClaim(claimsData, rows, columns);
             assert.equal(claimID, expectedClaimID);
         });
-    });
 
- });
+    });
+});

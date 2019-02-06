@@ -2,6 +2,7 @@
 var dayOne = require("./lib/dayOne.js");
 var dayTwo = require("./lib/dayTwo.js");
 var dayThree = require("./lib/dayThree.js");
+var dayFour = require("./lib/dayFour.js");
 var fs = require('fs');
 const express = require('express');
 const app = express();
