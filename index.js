@@ -2,6 +2,7 @@
 var dayOne = require("./lib/dayOne.js");
 var dayTwo = require("./lib/dayTwo.js");
 var dayThree = require("./lib/dayThree.js");
+var dayFour = require("./lib/dayFour.js");
 var fs = require('fs');
 const express = require('express');
 const app = express();
@@ -56,6 +57,24 @@ app.get('/day3b', function (req, res) {
         if(err) throw err;
         res.send(`${"DAY THREE SECOND PART - Claim ID with no contention = " + 
                  dayThree.findUncontestedClaim(data.split(/\r\n|\n|\r/gm), 2000, 2000)}`)
+ 
+    });
+});
+
+app.get('/day4a', function (req, res) {
+    fs.readFile("files\\day4.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY FOUR FIRST PART - Guard who slept the most times the minute he slept the most = " + 
+                 dayFour.solveThePuzzleDay4a(data.split(/\r\n|\n|\r/gm))}`)
+ 
+    });
+});
+
+app.get('/day4b', function (req, res) {
+    fs.readFile("files\\day4.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY FOUR SECOND PART - Guard who slept the same minute the most times multiplied by the minute he slept the most = " + 
+                 dayFour.solveThePuzzleDay4b(data.split(/\r\n|\n|\r/gm))}`)
  
     });
 });
