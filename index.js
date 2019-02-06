@@ -61,5 +61,23 @@ app.get('/day3b', function (req, res) {
     });
 });
 
+app.get('/day4a', function (req, res) {
+    fs.readFile("files\\day4.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY FOUR FIRST PART - Guard who slept the most times the minute he slept the most = " + 
+                 dayFour.solveThePuzzleDay4a(data.split(/\r\n|\n|\r/gm))}`)
+ 
+    });
+});
+
+app.get('/day4b', function (req, res) {
+    fs.readFile("files\\day4.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY FOUR SECOND PART - Guard who slept the same minute the most times multiplied by the minute he slept the most = " + 
+                 dayFour.solveThePuzzleDay4b(data.split(/\r\n|\n|\r/gm))}`)
+ 
+    });
+});
+
 app.listen(port, () => console.log(`Time Traveling Device listening on port ${port}!`))
 
