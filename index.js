@@ -3,6 +3,7 @@ var dayOne = require("./lib/dayOne.js");
 var dayTwo = require("./lib/dayTwo.js");
 var dayThree = require("./lib/dayThree.js");
 var dayFour = require("./lib/dayFour.js");
+var dayFive = require("./lib/dayFive.js");
 var fs = require('fs');
 const express = require('express');
 const app = express();
@@ -79,5 +80,22 @@ app.get('/day4b', function (req, res) {
     });
 });
 
+app.get('/day5a', function (req, res) {
+    fs.readFile("files\\day5.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY FIVE FIRST PART - Number of units left in collapsed polymer string = " + 
+                 dayFive.collapsePolymer(data)}`)
+ 
+    });
+});
+
+app.get('/day5b', function (req, res) {
+    fs.readFile("files\\day5.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY FIVE SECOND PART - Number of units left in optimal collapsed polymer string = " + 
+                 dayFive.findTheBestCollapse(data)}`)
+ 
+    });
+});
 app.listen(port, () => console.log(`Time Traveling Device listening on port ${port}!`))
 
