@@ -1,88 +1,8 @@
 var assert = require('assert');
 var dayFour = require("../lib/dayFour.js");
-var dataUtil = require("../lib/dataUtil.js");
 
 
 describe('dayFour', function () {
-
-    describe('dataUtil.arrayFromFile - given a relative file name', function () {
-        it('it should create an array with an entry for each line or record in the file and run the callback', function (done) {
-            var expectedDataArray = [
-                "[1518-11-03 00:05] Guard #10 begins shift",
-                "[1518-11-01 00:00] Guard #10 begins shift",
-                "[1518-11-01 00:25] wakes up",
-                "[1518-11-03 00:24] falls asleep",
-                "[1518-11-01 00:30] falls asleep",
-                "[1518-11-05 00:55] wakes up",
-                "[1518-11-01 00:55] wakes up",
-                "[1518-11-02 00:40] falls asleep",
-                "[1518-11-02 00:50] wakes up",
-                "[1518-11-03 00:29] wakes up",
-                "[1518-11-04 00:02] Guard #99 begins shift",
-                "[1518-11-04 00:46] wakes up",
-                "[1518-11-05 00:03] Guard #99 begins shift",
-                "[1518-11-05 00:45] falls asleep",
-                "[1518-11-01 23:58] Guard #99 begins shift",
-                "[1518-11-01 00:05] falls asleep",
-                "[1518-11-04 00:36] falls asleep"
-            ];
-
-            var fileName = "files\\testday4.txt";
-            dataUtil.arrayFromFile(fileName, function(data){
-                assert.deepEqual(data, expectedDataArray);
-                done();
-                
-            });                
-        });
-
-    });
-    describe('dataUtil.arraySort - given an array of strings', function () {
-        it('it should return the array sorted lexicographically', function() {
-            var inputDataArray = [
-                "[1518-11-03 00:05] Guard #10 begins shift",
-                "[1518-11-01 00:00] Guard #10 begins shift",
-                "[1518-11-01 00:25] wakes up",
-                "[1518-11-03 00:24] falls asleep",
-                "[1518-11-01 00:30] falls asleep",
-                "[1518-11-05 00:55] wakes up",
-                "[1518-11-01 00:55] wakes up",
-                "[1518-11-02 00:40] falls asleep",
-                "[1518-11-02 00:50] wakes up",
-                "[1518-11-03 00:29] wakes up",
-                "[1518-11-04 00:02] Guard #99 begins shift",
-                "[1518-11-04 00:46] wakes up",
-                "[1518-11-05 00:03] Guard #99 begins shift",
-                "[1518-11-05 00:45] falls asleep",
-                "[1518-11-01 23:58] Guard #99 begins shift",
-                "[1518-11-01 00:05] falls asleep",
-                "[1518-11-04 00:36] falls asleep"
-            ];
-
-            var sortedArray = dataUtil.arraySort(inputDataArray);
-            var expectedSortedArray = [
-                "[1518-11-01 00:00] Guard #10 begins shift",
-                "[1518-11-01 00:05] falls asleep",
-                "[1518-11-01 00:25] wakes up",
-                "[1518-11-01 00:30] falls asleep",
-                "[1518-11-01 00:55] wakes up",
-                "[1518-11-01 23:58] Guard #99 begins shift",
-                "[1518-11-02 00:40] falls asleep",
-                "[1518-11-02 00:50] wakes up",
-                "[1518-11-03 00:05] Guard #10 begins shift",
-                "[1518-11-03 00:24] falls asleep",
-                "[1518-11-03 00:29] wakes up",
-                "[1518-11-04 00:02] Guard #99 begins shift",
-                "[1518-11-04 00:36] falls asleep",
-                "[1518-11-04 00:46] wakes up",
-                "[1518-11-05 00:03] Guard #99 begins shift",
-                "[1518-11-05 00:45] falls asleep",
-                "[1518-11-05 00:55] wakes up"                    
-            ];
-                
-            assert.deepEqual(sortedArray, expectedSortedArray);
-            
-        });
-    });
 
     describe('dayFour.parseLog - given a single input string of the Guard type', function () {
         it('it should return an array with the individual bits of data', function() {
