@@ -4,6 +4,7 @@ var dayTwo = require("./lib/dayTwo.js");
 var dayThree = require("./lib/dayThree.js");
 var dayFour = require("./lib/dayFour.js");
 var dayFive = require("./lib/dayFive.js");
+var daySix = require("./lib/daySix.js");
 var fs = require('fs');
 const express = require('express');
 const app = express();
@@ -94,6 +95,24 @@ app.get('/day5b', function (req, res) {
         if(err) throw err;
         res.send(`${"DAY FIVE SECOND PART - Number of units left in optimal collapsed polymer string = " + 
                  dayFive.findTheBestCollapse(data)}`)
+ 
+    });
+});
+
+app.get('/day6a', function (req, res) {
+    fs.readFile("files\\day6.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY SIX FIRST PART - Number of elements closest to not inifinite coordinates = " + 
+                 daySix.mostElements(data.split(/\r\n|\n|\r/gm))}`)
+ 
+    });
+});
+
+app.get('/day6b', function (req, res) {
+    fs.readFile("files\\day6.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY SIX FIRST PART - Number of elements with a sum od Manhatten Distances less than 10,000 = " + 
+                 daySix.findCloseElements(data.split(/\r\n|\n|\r/gm), 10000)}`)
  
     });
 });
