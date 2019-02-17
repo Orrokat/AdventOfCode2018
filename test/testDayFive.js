@@ -11,7 +11,7 @@ describe('dayFive', function () {
             var expectedlength = 10;
             var collapsedPolymerStringLength = dayFive.collapsePolymer(inputPolymerString);
 
-            assert.equal(expectedlength, collapsedPolymerStringLength);
+            assert.equal(collapsedPolymerStringLength, expectedlength);
                               
         });
 
@@ -23,7 +23,7 @@ describe('dayFive', function () {
             var expectedlength = 4;
             var bestPolymerStringLength = dayFive.findTheBestCollapse(inputPolymerString);
 
-            assert.equal(expectedlength, bestPolymerStringLength);
+            assert.equal(bestPolymerStringLength, expectedlength);
                               
         });
 
