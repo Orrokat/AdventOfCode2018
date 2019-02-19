@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <title>Advent of Code 2018 Solutions by Susan Regan</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>Advent of Code 2018</h1>
+        <h2>Solutions by Susan Regan</h2>
+        <select v-model="selectedDay">
+            <option v-for="day in days" v-bind:value="day">{{day}}</option>
+        </select>
+        <button type="button" v-on:click="sendThing">Press to get answer</button>
+        <p>
+            {{message}}
+        </p>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
