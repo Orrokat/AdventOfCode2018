@@ -9,8 +9,11 @@ var fs = require('fs');
 const express = require('express');
 const app = express();
 const port = 3000;
+const numberOfDays = 6;
 
-app.get('/', function (req, res) {
+app.use(express.static('.'));
+
+app.get('/day1a', function (req, res) {
     fs.readFile("files\\day1a.csv", "utf8", function(err, data){
         if(err) throw err;
         res.send(`${"DAY ONE FIRST PART - Total Frequency = " + dayOne.adjust(data.split(/\r\n|\n|\r/gm))}`)
@@ -111,10 +114,25 @@ app.get('/day6a', function (req, res) {
 app.get('/day6b', function (req, res) {
     fs.readFile("files\\day6.txt", "utf8", function(err, data){
         if(err) throw err;
-        res.send(`${"DAY SIX FIRST PART - Number of elements with a sum od Manhatten Distances less than 10,000 = " + 
+        res.send(`${"DAY SIX FIRST PART - Number of elements with a sum of Manhatten Distances less than 10,000 = " + 
                  daySix.findCloseElements(data.split(/\r\n|\n|\r/gm), 10000)}`)
  
     });
 });
+
+app.get('/days', function (req, res){
+        res.send(getDaysArray(numberOfDays));
+});
+
 app.listen(port, () => console.log(`Time Traveling Device listening on port ${port}!`))
+
+function getDaysArray(numberOfDays) {
+    var daysArray = [];
+    for (var x = 0; x < numberOfDays; x++) {
+        var dayNumber = x + 1;
+        daysArray.push("day" + dayNumber + "a");
+        daysArray.push("day" + dayNumber + "b");
+    }
+    return daysArray;
+}
 
