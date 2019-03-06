@@ -1,8 +1,6 @@
 var assert = require('assert');
 var daySix = require("../lib/daySix.js");
 
-
-
 describe('daySix', function () {
 
     describe('daySix.parseArray - given an array of x, y coordinates  ', function () {

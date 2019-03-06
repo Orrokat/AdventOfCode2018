@@ -5,11 +5,12 @@ var dayThree = require("./lib/dayThree.js");
 var dayFour = require("./lib/dayFour.js");
 var dayFive = require("./lib/dayFive.js");
 var daySix = require("./lib/daySix.js");
+var daySeven = require("./lib/daySeven.js");
 var fs = require('fs');
 const express = require('express');
 const app = express();
 const port = 3000;
-const numberOfDays = 6;
+const numberOfDays = 7;
 
 app.use(express.static('.'));
 
@@ -114,8 +115,17 @@ app.get('/day6a', function (req, res) {
 app.get('/day6b', function (req, res) {
     fs.readFile("files\\day6.txt", "utf8", function(err, data){
         if(err) throw err;
-        res.send(`${"DAY SIX FIRST PART - Number of elements with a sum of Manhatten Distances less than 10,000 = " + 
+        res.send(`${"DAY SIX SECOND PART - Number of elements with a sum of Manhatten Distances less than 10,000 = " + 
                  daySix.findCloseElements(data.split(/\r\n|\n|\r/gm), 10000)}`)
+ 
+    });
+});
+
+app.get('/day7a', function (req, res) {
+    fs.readFile("files\\day7.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY SEVEN FIRST PART - Order instructions should be carried out = " + 
+                 daySeven.findStepOrder(data.split(/\r\n|\n|\r/gm), 10000)}`)
  
     });
 });
