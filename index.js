@@ -125,7 +125,16 @@ app.get('/day7a', function (req, res) {
     fs.readFile("files\\day7.txt", "utf8", function(err, data){
         if(err) throw err;
         res.send(`${"DAY SEVEN FIRST PART - Order instructions should be carried out = " + 
-                 daySeven.findStepOrder(data.split(/\r\n|\n|\r/gm), 10000)}`)
+                 daySeven.findStepOrder(data.split(/\r\n|\n|\r/gm))}`)
+ 
+    });
+});
+
+app.get('/day7b', function (req, res) {
+    fs.readFile("files\\day7.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY SEVEN SECOND PART - Seconds to complete all tasks with 5 workers = " + 
+                 daySeven.findSecondsToFinish(data.split(/\r\n|\n|\r/gm), 5, 60)}`)
  
     });
 });
