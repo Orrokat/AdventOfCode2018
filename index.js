@@ -143,8 +143,17 @@ app.get('/day7b', function (req, res) {
 app.get('/day8a', function (req, res) {
     fs.readFile("files\\day8.txt", "utf8", function(err, data){
         if(err) throw err;
-        res.send(`${"DAY EIGHT SECOND PART - Sum of license key metadata " + 
+        res.send(`${"DAY EIGHT FIRST PART - Sum of license key metadata " + 
                  dayEight.sumMetaData(data.split(/\s/gm))}`)
+ 
+    });
+});
+
+app.get('/day8b', function (req, res) {
+    fs.readFile("files\\day8.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY EIGHT SECOND PART - Sum of license key primary node " + 
+                 dayEight.sumTree(data.split(/\s/gm))}`)
  
     });
 });
