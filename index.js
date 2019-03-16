@@ -6,11 +6,12 @@ var dayFour = require("./lib/dayFour.js");
 var dayFive = require("./lib/dayFive.js");
 var daySix = require("./lib/daySix.js");
 var daySeven = require("./lib/daySeven.js");
+var dayEight = require("./lib/dayEight.js");
 var fs = require('fs');
 const express = require('express');
 const app = express();
 const port = 3000;
-const numberOfDays = 7;
+const numberOfDays = 8;
 
 app.use(express.static('.'));
 
@@ -135,6 +136,24 @@ app.get('/day7b', function (req, res) {
         if(err) throw err;
         res.send(`${"DAY SEVEN SECOND PART - Seconds to complete all tasks with 5 workers = " + 
                  daySeven.findSecondsToFinish(data.split(/\r\n|\n|\r/gm), 5, 60)}`)
+ 
+    });
+});
+
+app.get('/day8a', function (req, res) {
+    fs.readFile("files\\day8.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY EIGHT FIRST PART - Sum of license key metadata " + 
+                 dayEight.sumMetaData(data.split(/\s/gm))}`)
+ 
+    });
+});
+
+app.get('/day8b', function (req, res) {
+    fs.readFile("files\\day8.txt", "utf8", function(err, data){
+        if(err) throw err;
+        res.send(`${"DAY EIGHT SECOND PART - Sum of license key primary node " + 
+                 dayEight.sumTree(data.split(/\s/gm))}`)
  
     });
 });
