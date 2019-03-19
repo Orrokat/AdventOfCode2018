@@ -7,11 +7,14 @@ var dayFive = require("./lib/dayFive.js");
 var daySix = require("./lib/daySix.js");
 var daySeven = require("./lib/daySeven.js");
 var dayEight = require("./lib/dayEight.js");
+var dayNine = require("./lib/dayNine.js");
 var fs = require('fs');
 const express = require('express');
 const app = express();
 const port = 3000;
-const numberOfDays = 8;
+const numberOfDays = 9;
+const numElves = 405;
+const highestMarble = 70953;
 
 app.use(express.static('.'));
 
@@ -156,6 +159,18 @@ app.get('/day8b', function (req, res) {
                  dayEight.sumTree(data.split(/\s/gm))}`)
  
     });
+});
+
+app.get('/day9a', function (req, res) {
+    res.send(`${"DAY NINE FIRST PART - Marble Game High Score " + 
+                 dayNine.marbleGame(numElves, highestMarble)}`)
+ 
+});
+
+app.get('/day9b', function (req, res) {
+    res.send(`${"DAY NINE SECOND PART - Marble Game High Score with the highest marble value multiplied by 100" + 
+                 dayNine.marbleGame(numElves, highestMarble * 100)}`)
+ 
 });
 
 app.get('/days', function (req, res){
