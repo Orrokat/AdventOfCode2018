@@ -8,11 +8,12 @@ var daySix = require("./lib/daySix.js");
 var daySeven = require("./lib/daySeven.js");
 var dayEight = require("./lib/dayEight.js");
 var dayNine = require("./lib/dayNine.js");
+var dayTen = require("./lib/dayTen.js");
 var fs = require('fs');
 const express = require('express');
 const app = express();
 const port = 3000;
-const numberOfDays = 9;
+const numberOfDays = 10;
 const numElves = 405;
 const highestMarble = 70953;
 
@@ -173,11 +174,28 @@ app.get('/day9b', function (req, res) {
  
 });
 
+app.get('/day10a', function (req, res) {
+    fs.readFile("files\\day10.txt", "utf8", function(err, data){
+        if(err) throw err;
+    
+        res.send(`${getPointsOfLight(data.split(/\r\n|\n|\r/gm))}`)
+ 
+    });
+});
+
 app.get('/days', function (req, res){
         res.send(getDaysArray(numberOfDays));
 });
 
 app.listen(port, () => console.log(`Time Traveling Device listening on port ${port}!`))
+
+function getPointsOfLight(positionVelocityArray){
+    var moveForward = 10942;
+    var positionVelocityObjectArray = dayTen.parseData(positionVelocityArray);
+    positionObjectVelocityArray =  dayTen.advanceLights(positionVelocityObjectArray, moveForward);
+    var render = dayTen.renderDisplay(positionVelocityObjectArray);
+    return render;
+}
 
 function getDaysArray(numberOfDays) {
     var daysArray = [];
