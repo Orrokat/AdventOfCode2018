@@ -178,7 +178,7 @@ app.get('/day10a', function (req, res) {
     fs.readFile("files\\day10.txt", "utf8", function(err, data){
         if(err) throw err;
     
-        res.send(`${getPointsOfLight(data.split(/\r\n|\n|\r/gm))}`)
+        res.send(`${dayTen.getPointsOfLight(data.split(/\r\n|\n|\r/gm))}`)
  
     });
 });
@@ -189,13 +189,7 @@ app.get('/days', function (req, res){
 
 app.listen(port, () => console.log(`Time Traveling Device listening on port ${port}!`))
 
-function getPointsOfLight(positionVelocityArray){
-    var moveForward = 10942;
-    var positionVelocityObjectArray = dayTen.parseData(positionVelocityArray);
-    positionObjectVelocityArray =  dayTen.advanceLights(positionVelocityObjectArray, moveForward);
-    var render = dayTen.renderDisplay(positionVelocityObjectArray);
-    return render;
-}
+
 
 function getDaysArray(numberOfDays) {
     var daysArray = [];
