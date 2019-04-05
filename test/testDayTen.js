@@ -354,9 +354,9 @@ describe('dayTen', function () {
                     { posX: 8, posY: 7, velX: -2, velY: 0 },
                     { posX: 3, posY: 3, velX: 2, velY: -1 } ];
  
-            var newPositionVelocityObjectArray = dayTen.advanceLights(positionVelocityObjectArray, moveForward);
+            dayTen.advanceLights(positionVelocityObjectArray, moveForward);
  
-            assert.deepEqual(newPositionVelocityObjectArray, expectedPositionVelocityObjectArray);
+            assert.deepEqual(positionVelocityObjectArray, expectedPositionVelocityObjectArray);
 
         });
     });
