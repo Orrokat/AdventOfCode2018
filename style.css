@@ -1,6 +1,10 @@
 h1{
     color: darkblue;
 }
+h6{
+    color: darkblue;
+    font-size: 14px
+}
 p{
     color: red;
     background-color: cornsilk;

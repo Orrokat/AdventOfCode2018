@@ -14,8 +14,12 @@
         "sourceType": "module"
     },
     "plugins": [
-        "vue"
+        "vue",
+        "mocha"
     ],
     "rules": {
+        "mocha/no-exclusive-tests": "error",
+        "no-undef": ["error",
+        {"varsIgnorePattern": "define|it"}]
     }
 }
