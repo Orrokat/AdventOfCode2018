@@ -187,6 +187,10 @@ app.get('/days', function (req, res) {
   res.send(getDaysArray(numberOfDays))
 })
 
+app.get('/initializeCanvas', function (req, res) {
+  res.send(dayTen.initializeCanvas(req.query.canvasWidth, req.query.canvasHeight))
+})
+
 app.listen(port, () => console.log(`Time Traveling Device listening on port ${port}!`))
 
 function getDaysArray (numberOfDays) {

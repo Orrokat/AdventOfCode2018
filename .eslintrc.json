@@ -2,7 +2,8 @@
     "env": {
         "browser": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "mocha": true
     },
     "extends": "standard",
     "globals": {
@@ -18,8 +19,6 @@
         "mocha"
     ],
     "rules": {
-        "mocha/no-exclusive-tests": "error",
-        "no-undef": ["error",
-        {"varsIgnorePattern": "define|it"}]
+        "mocha/no-exclusive-tests": "error"
     }
 }
