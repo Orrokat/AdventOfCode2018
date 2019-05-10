@@ -397,91 +397,89 @@ describe('dayTen', function () {
       assert.deepStrictEqual(displayString, expextedDisplayString)
     })
   })
-  describe('dayTen.initializeCanvas - given an array of position/velocity records and the width/height of the canvas ', function () {
-    it('should return an object with data required to set up the html Canvas', function () {
-      var positionVelocityArray = [
-        'position=< 9,  1> velocity=< 0,  2>',
-        'position=< 7,  0> velocity=<-1,  0>',
-        'position=< 3, -2> velocity=<-1,  1>',
-        'position=< 6, 10> velocity=<-2, -1>',
-        'position=< 2, -4> velocity=< 2,  2>',
-        'position=<-6, 10> velocity=< 2, -2>',
-        'position=< 1,  8> velocity=< 1, -1>',
-        'position=< 1,  7> velocity=< 1,  0>',
-        'position=<-3, 11> velocity=< 1, -2>',
-        'position=< 7,  6> velocity=<-1, -1>',
-        'position=<-2,  3> velocity=< 1,  0>',
-        'position=<-4,  3> velocity=< 2,  0>',
-        'position=<10, -3> velocity=<-1,  1>',
-        'position=< 5, 11> velocity=< 1, -2>',
-        'position=< 4,  7> velocity=< 0, -1>',
-        'position=< 8, -2> velocity=< 0,  1>',
-        'position=<15,  0> velocity=<-2,  0>',
-        'position=< 1,  6> velocity=< 1,  0>',
-        'position=< 8,  9> velocity=< 0, -1>',
-        'position=< 3,  3> velocity=<-1,  1>',
-        'position=< 0,  5> velocity=< 0, -1>',
-        'position=<-2,  2> velocity=< 2,  0>',
-        'position=< 5, -2> velocity=< 1,  2>',
-        'position=< 1,  4> velocity=< 2,  1>',
-        'position=<-2,  7> velocity=< 2, -2>',
-        'position=< 3,  6> velocity=<-1, -1>',
-        'position=< 5,  0> velocity=< 1,  0>',
-        'position=<-6,  0> velocity=< 2,  0>',
-        'position=< 5,  9> velocity=< 1, -2>',
-        'position=<14,  7> velocity=<-2,  0>',
-        'position=<-3,  6> velocity=< 2, -1>'
-      ]
+  // describe('dayTen.initializeCanvas - given an array of position/velocity records and the width/height of the canvas ', function () {
+  //   it('should return an object with data required to set up the html Canvas', function () {
+  //     var positionVelocityArray = [
+  //       'position=< 9,  1> velocity=< 0,  2>',
+  //       'position=< 7,  0> velocity=<-1,  0>',
+  //       'position=< 3, -2> velocity=<-1,  1>',
+  //       'position=< 6, 10> velocity=<-2, -1>',
+  //       'position=< 2, -4> velocity=< 2,  2>',
+  //       'position=<-6, 10> velocity=< 2, -2>',
+  //       'position=< 1,  8> velocity=< 1, -1>',
+  //       'position=< 1,  7> velocity=< 1,  0>',
+  //       'position=<-3, 11> velocity=< 1, -2>',
+  //       'position=< 7,  6> velocity=<-1, -1>',
+  //       'position=<-2,  3> velocity=< 1,  0>',
+  //       'position=<-4,  3> velocity=< 2,  0>',
+  //       'position=<10, -3> velocity=<-1,  1>',
+  //       'position=< 5, 11> velocity=< 1, -2>',
+  //       'position=< 4,  7> velocity=< 0, -1>',
+  //       'position=< 8, -2> velocity=< 0,  1>',
+  //       'position=<15,  0> velocity=<-2,  0>',
+  //       'position=< 1,  6> velocity=< 1,  0>',
+  //       'position=< 8,  9> velocity=< 0, -1>',
+  //       'position=< 3,  3> velocity=<-1,  1>',
+  //       'position=< 0,  5> velocity=< 0, -1>',
+  //       'position=<-2,  2> velocity=< 2,  0>',
+  //       'position=< 5, -2> velocity=< 1,  2>',
+  //       'position=< 1,  4> velocity=< 2,  1>',
+  //       'position=<-2,  7> velocity=< 2, -2>',
+  //       'position=< 3,  6> velocity=<-1, -1>',
+  //       'position=< 5,  0> velocity=< 1,  0>',
+  //       'position=<-6,  0> velocity=< 2,  0>',
+  //       'position=< 5,  9> velocity=< 1, -2>',
+  //       'position=<14,  7> velocity=<-2,  0>',
+  //       'position=<-3,  6> velocity=< 2, -1>'
+  //     ]
 
-      var expextedObject = {
-        minX: 0,
-        maxX: 0,
-        minY: 0,
-        maxY: 0,
-        startX: 0,
-        endX: 0,
-        startY: 0,
-        endY: 0,
-        offsetX: 0,
-        offsetY: 0,
-        positionVelocityObjectArray: [
-          { posX: 9, posY: 7, velX: 0, velY: 2 },
-          { posX: 4, posY: 0, velX: -1, velY: 0 },
-          { posX: 0, posY: 1, velX: -1, velY: 1 },
-          { posX: 0, posY: 7, velX: -2, velY: -1 },
-          { posX: 8, posY: 2, velX: 2, velY: 2 },
-          { posX: 0, posY: 4, velX: 2, velY: -2 },
-          { posX: 4, posY: 5, velX: 1, velY: -1 },
-          { posX: 4, posY: 7, velX: 1, velY: 0 },
-          { posX: 0, posY: 5, velX: 1, velY: -2 },
-          { posX: 4, posY: 3, velX: -1, velY: -1 },
-          { posX: 1, posY: 3, velX: 1, velY: 0 },
-          { posX: 2, posY: 3, velX: 2, velY: 0 },
-          { posX: 7, posY: 0, velX: -1, velY: 1 },
-          { posX: 8, posY: 5, velX: 1, velY: -2 },
-          { posX: 4, posY: 4, velX: 0, velY: -1 },
-          { posX: 8, posY: 1, velX: 0, velY: 1 },
-          { posX: 9, posY: 0, velX: -2, velY: 0 },
-          { posX: 4, posY: 6, velX: 1, velY: 0 },
-          { posX: 8, posY: 6, velX: 0, velY: -1 },
-          { posX: 0, posY: 6, velX: -1, velY: 1 },
-          { posX: 0, posY: 2, velX: 0, velY: -1 },
-          { posX: 4, posY: 2, velX: 2, velY: 0 },
-          { posX: 8, posY: 4, velX: 1, velY: 2 },
-          { posX: 7, posY: 7, velX: 2, velY: 1 },
-          { posX: 4, posY: 1, velX: 2, velY: -2 },
-          { posX: 0, posY: 3, velX: -1, velY: -1 },
-          { posX: 8, posY: 0, velX: 1, velY: 0 },
-          { posX: 0, posY: 0, velX: 2, velY: 0 },
-          { posX: 8, posY: 3, velX: 1, velY: -2 },
-          { posX: 8, posY: 7, velX: -2, velY: 0 },
-          { posX: 3, posY: 3, velX: 2, velY: -1 } ]
-      }
-            
+  //     var expextedObject = {
+  //       minX: 0,
+  //       maxX: 0,
+  //       minY: 0,
+  //       maxY: 0,
+  //       startX: 0,
+  //       endX: 0,
+  //       startY: 0,
+  //       endY: 0,
+  //       offsetX: 0,
+  //       offsetY: 0,
+  //       positionVelocityObjectArray: [
+  //         { posX: 9, posY: 7, velX: 0, velY: 2 },
+  //         { posX: 4, posY: 0, velX: -1, velY: 0 },
+  //         { posX: 0, posY: 1, velX: -1, velY: 1 },
+  //         { posX: 0, posY: 7, velX: -2, velY: -1 },
+  //         { posX: 8, posY: 2, velX: 2, velY: 2 },
+  //         { posX: 0, posY: 4, velX: 2, velY: -2 },
+  //         { posX: 4, posY: 5, velX: 1, velY: -1 },
+  //         { posX: 4, posY: 7, velX: 1, velY: 0 },
+  //         { posX: 0, posY: 5, velX: 1, velY: -2 },
+  //         { posX: 4, posY: 3, velX: -1, velY: -1 },
+  //         { posX: 1, posY: 3, velX: 1, velY: 0 },
+  //         { posX: 2, posY: 3, velX: 2, velY: 0 },
+  //         { posX: 7, posY: 0, velX: -1, velY: 1 },
+  //         { posX: 8, posY: 5, velX: 1, velY: -2 },
+  //         { posX: 4, posY: 4, velX: 0, velY: -1 },
+  //         { posX: 8, posY: 1, velX: 0, velY: 1 },
+  //         { posX: 9, posY: 0, velX: -2, velY: 0 },
+  //         { posX: 4, posY: 6, velX: 1, velY: 0 },
+  //         { posX: 8, posY: 6, velX: 0, velY: -1 },
+  //         { posX: 0, posY: 6, velX: -1, velY: 1 },
+  //         { posX: 0, posY: 2, velX: 0, velY: -1 },
+  //         { posX: 4, posY: 2, velX: 2, velY: 0 },
+  //         { posX: 8, posY: 4, velX: 1, velY: 2 },
+  //         { posX: 7, posY: 7, velX: 2, velY: 1 },
+  //         { posX: 4, posY: 1, velX: 2, velY: -2 },
+  //         { posX: 0, posY: 3, velX: -1, velY: -1 },
+  //         { posX: 8, posY: 0, velX: 1, velY: 0 },
+  //         { posX: 0, posY: 0, velX: 2, velY: 0 },
+  //         { posX: 8, posY: 3, velX: 1, velY: -2 },
+  //         { posX: 8, posY: 7, velX: -2, velY: 0 },
+  //         { posX: 3, posY: 3, velX: 2, velY: -1 } ]
+  //     }
+  //     var dataObject = dayTen.initializeCanvas(positionVelocityObjectArray)
 
-      var dataObject = dayTen.initializeCanvas(positionVelocityObjectArray)
-
-      assert.deepStrictEqual(dataObject, expextedObject)
-    })
-  })
+  //     assert.deepStrictEqual(dataObject, expextedObject)
+  //   })
+  // })
 })

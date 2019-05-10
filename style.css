@@ -7,13 +7,12 @@ h6{
 }
 p{
     color: red;
-    background-color: cornsilk;
 }
 pre{
     background-color: black;
     color: yellow;
     font-size: 4px;
 }
-#app{
+body{
     background-color: aliceblue;
 }

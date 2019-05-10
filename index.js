@@ -165,8 +165,12 @@ app.get('/day10a', function (req, res) {
   fs.readFile('files\\day10.txt', 'utf8', function (err, data) {
     if (err) throw err
 
-    res.send(`${dayTen.getPointsOfLightForCanvas(data.split(/\r\n|\n|\r/gm), req.query.moveForward)}`)
+    res.send(`${dayTen.getPointsOfLightForCanvas(data.split(/\r\n|\n|\r/gm))}`)
   })
+})
+
+app.get('/day10b', function (req, res) {
+  return res.redirect('/day10a')
 })
 
 app.get('/day11a', function (req, res) {
@@ -185,10 +189,6 @@ app.get('/day11b', function (req, res) {
 
 app.get('/days', function (req, res) {
   res.send(getDaysArray(numberOfDays))
-})
-
-app.get('/initializeCanvas', function (req, res) {
-  res.send(dayTen.initializeCanvas(req.query.canvasWidth, req.query.canvasHeight))
 })
 
 app.listen(port, () => console.log(`Time Traveling Device listening on port ${port}!`))
