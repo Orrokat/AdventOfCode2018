@@ -20,9 +20,19 @@
         <p>
             {{message}}
         </p>
-        <pre>
-            {{displaygrid}}
-        </pre>
+        <template v-if="(selectedDay === 'day10a' || selectedDay === 'day10b') && day10PointArray.length > 0" >
+            <div>
+                <button type="button" title="Go back 10 seconds" v-on:click="advanceSeconds(-10)">&lt&lt</button>
+                <button type="button" title="Go back 1 second" v-on:click="advanceSeconds(-1)">&lt</button>
+                <button type="button" title="Go forward 1 seconds" v-on:click="advanceSeconds(1)">&gt</button>
+                <button type="button" title="Go forward 10 seconds" v-on:click="advanceSeconds(10)">&gt&gt</button> 
+                <button type="button" title="Run to Grid" v-on:click="moveIntoGrid">Run to Grid</button> 
+                Seconds {{seconds}} 
+            </div>
+            <div>
+                <canvas id="pointsOfLightCanvas" width="600px" height="600px"></canvas>
+            </div>
+        </template>
     </div>
     <script src="app.js"></script>
 </body>
