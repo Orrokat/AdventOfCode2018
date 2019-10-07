@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Orrokat/AdventOfCode2018#readme",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "lint": "^1.1.2",
     "mocha": "^5.2.0"
   },
