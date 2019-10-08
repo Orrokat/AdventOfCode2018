@@ -112,4 +112,39 @@ describe('day12', function () {
       assert.strict.deepEqual(thisPlantLives, false)
     })
   })
+  describe('day12.nextGeneration - given an array representing the current generation and an array of rules', function () {
+    it('should return a string representing the next generation', function () {
+      var plantExpansionRules =
+      [ '...## => #',
+        '..... => .',
+        '..#.. => #',
+        '##### => .',
+        '.#... => #',
+        '.#.#. => #',
+        '.#.## => #',
+        '.##.. => #',
+        '.#### => #',
+        '....# => .',
+        '#.... => .',
+        '#.#.# => #',
+        '#.### => #',
+        '##.#. => #',
+        '##.## => #',
+        '###.. => #',
+        '###.# => #',
+        '####. => #' ]
+
+      
+      var rulesArray = day12.extractRulesArray(plantExpansionRules)
+      var currentGenerationArray = [
+        '.', '.', '.', '.', '#', '.', '.', '#', '.', '#', '.', '.', '#', '#', '.', '.', '.', '.', '.', '.', '#', '#', '#', '.', '.', '.', '#', '#', '#', '.', '.', '.', '.'
+      ]
+      var expectedArray = [
+        '.', '.', '.', '.', '#', '.', '.', '.', '#', '.', '.', '.', '.', '#', '.', '.', '.', '.', '.', '#', '.', '.', '#', '.', '.', '#', '.', '.', '#', '.', '.', '.', '.'
+      ]
+      var nextGenerationArray = day12.nextGeneration(currentGenerationArray, rulesArray)
+      
+      assert.strict.deepEqual(nextGenerationArray, expectedArray)
+    })
+  })
 })
